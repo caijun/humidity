@@ -17,5 +17,5 @@
 
 ## NOTE
 
-- in this NEWS file, #n means the issue number on GitHub, e.g. #1 is https://github.com/caijun/knitr/issues/1
+- in this NEWS file, #n means the issue number on GitHub, e.g. #1 is https://github.com/caijun/humidity/issues/1
 
