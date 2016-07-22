@@ -2,7 +2,7 @@
 # load humidity package
 library(humidity)
 
-# built-in 1-h influenza virus surival data
+# display built-in 1-h influenza virus surival data
 head(ivs)
 
 ## ---- message=FALSE------------------------------------------------------
@@ -16,7 +16,9 @@ ivs$E <- WVP(ivs$RH, ivs$Es)
 ivs$rho <- AH(ivs$E, ivs$Tk)
 # specific humidity in kg/kg
 ivs$q <- SH(ivs$E)
-# display data
+# mixing ratio in kg/kg
+ivs$omega <- MR(ivs$q)
+# display calculation results
 head(ivs)
 
 ## ------------------------------------------------------------------------

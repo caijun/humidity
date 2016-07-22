@@ -15,12 +15,13 @@ vignette: >
 # load humidity package
 library(humidity)
 
-# built-in 1-h influenza virus surival data
+# display built-in 1-h influenza virus surival data
 head(ivs)
 ```
-Note that `SVP` function can calculate saturation vapor pressure per either **Clausius-Clapeyron equation** or **Murray equation**. Their results are the same and the default `formula` is `Clausius-Clapeyron`, which is consistent with [Shaman and Kohn (20009)](http://www.pnas.org/content/106/9/3243). The default value for parameter `p` in function `SH` is one standard atmospheric pressure, i.e. `101,325`$Pa$.
 
-Read in the extracted 1-h influenza A virus survival data and call helper functions to calculate specific humidity. [Harper (1961)](http://journals.cambridge.org/action/displayAbstract?fromPage=online&aid=4683604&fileId=S0022172400039176) didn't give any information on the atmospheric pressure condition under which his experiments were conducted. I assume that he performed the experiments under standard atmospheric pressure. 
+As the temperature `T` is recorded in degree Celsius (°C), we first apply `C2K` function to convert the temperature into Kelvin (K) before our following calculation. We then call `SVP` and `WVP` functions to calculate saturation vapor pressure $e_s$ (hPa) and partial water vapor pressure $e$ (Pa) at temperature $T$, respectively. Finally by calling `AH`, `SH`, and `MR` functions, we can calculate humidity measures of interest, such as absolute humidity $\rho_w$ (kg/m^3), specific humidity $q$ (kg/kg), and mixing ratio $\omega$ (kg/kg).
+
+Note that `SVP` function provides two formulas (either **Clausius-Clapeyron equation** or **Murray equation**) for calculating saturation vapor pressure. Both results are the same and the default `formula` is `Clausius-Clapeyron`, which is consistent with [Shaman and Kohn (20009)](http://www.pnas.org/content/106/9/3243). Furthermore, [Harper (1961)](http://journals.cambridge.org/action/displayAbstract?fromPage=online&aid=4683604&fileId=S0022172400039176) didn't give any information on the atmospheric pressure condition under which his experiments were conducted. We just assume that he performed the experiments under standard atmospheric pressure and the default value of `p = 101325` Pa is used in `SH` function when calculating specific humidity.
 ```{r, message=FALSE}
 # tempature in Kelvin
 ivs$Tk <- C2K(ivs$T)
@@ -32,7 +33,9 @@ ivs$E <- WVP(ivs$RH, ivs$Es)
 ivs$rho <- AH(ivs$E, ivs$Tk)
 # specific humidity in kg/kg
 ivs$q <- SH(ivs$E)
-# display data
+# mixing ratio in kg/kg
+ivs$omega <- MR(ivs$q)
+# display calculation results
 head(ivs)
 ```
 
@@ -42,7 +45,7 @@ Hinted by [Shaman and Kohn (20009)](http://www.pnas.org/content/106/9/3243) and 
 loglm <- lm(log(PVV) ~ q, data = ivs)
 summary(loglm)
 ```
-The log-linear regression model is significant with a $p$-value less than 0.0001, indicating that log-linear model can well depict the association of influenza virus survival with specific humidity. But the coefficient estimate for specific humidity is $-121.5076$, which is too far from the value of $a = -180$ estimated by [Shaman et al. (2010)](http://www.plosbiology.org/article/info%3Adoi%2F10.1371%2Fjournal.pbio.1000316).
+The regression coefficient of specific humidity $q$ is significant with a $p$-value less than 0.0001, indicating that log-linear model can well depict the association of influenza virus survival with specific humidity. But the coefficient estimate for specific humidity $q$ is $-121.5076$, which is too far from the value of $a = -180$ estimated by [Shaman et al. (2010)](http://www.plosbiology.org/article/info%3Adoi%2F10.1371%2Fjournal.pbio.1000316).
 
 The following codes draw the scatter plot of 1-h influenza A virus survival and specific humidity, with regression curve overlapped.
 
