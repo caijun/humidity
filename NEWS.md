@@ -9,7 +9,7 @@
 - updated vignette [Regression of Influenza Virus Survival on Specific Humidity](https://cran.r-project.org/web/packages/humidity/vignettes/ivs-sh.html)
 
 
-# CHANGES IN humidity VERSION 0.1
+# CHANGES IN humidity VERSION 0.1.0
 
 ## NEW FEATURES
 
