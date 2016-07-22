@@ -24,6 +24,13 @@ Or the development version from github:
 devtools::install_github("caijun/humidity", build_vignettes = TRUE)
 ```
 
+## 
+To get started with **humidity** package, view available vignettes in the package:
+
+```r
+browseVignettes("humidity")
+```
+
 ## Contact
 
 Bugs and feature requests can be filed to
