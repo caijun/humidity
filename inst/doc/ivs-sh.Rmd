@@ -1,0 +1,71 @@
+---
+title: "Regression of Influenza A Virus Survival on Specific Humidity"
+author: "Jun Cai <cai-j12@mails.tsinghua.edu.cn>"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Regression of Influenza Virus Survival on Specific Humidity}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+[Harper (1961)](http://journals.cambridge.org/action/displayAbstract?fromPage=online&aid=4683604&fileId=S0022172400039176) tested airborne virus particles of influenza A for viable survival in the dark at controlled temperature and relative humidity for up to 23 hour after spraying. The 1-h influenza A virus survival data are extracted from the paper and now are stored in **humidity** pacakge with a dataset name of `ivs`. In this vignette, the dataset `ivs` is used to explore the relationship between influenza A virus survival and specific humidity. As specific humidity isn't provided, we first need to apply functions from **humidity** package to calculate specific humidity from temperature and relative humidity.
+
+```{r}
+# load humidity package
+library(humidity)
+
+# built-in 1-h influenza virus surival data
+head(ivs)
+```
+Note that `SVP` function can calculate saturation vapor pressure per either **Clausius-Clapeyron equation** or **Murray equation**. Their results are the same and the default `formula` is `Clausius-Clapeyron`, which is consistent with [Shaman and Kohn (20009)](http://www.pnas.org/content/106/9/3243). The default value for parameter `p` in function `SH` is one standard atmospheric pressure, i.e. `101,325`$Pa$.
+
+Read in the extracted 1-h influenza A virus survival data and call helper functions to calculate specific humidity. [Harper (1961)](http://journals.cambridge.org/action/displayAbstract?fromPage=online&aid=4683604&fileId=S0022172400039176) didn't give any information on the atmospheric pressure condition under which his experiments were conducted. I assume that he performed the experiments under standard atmospheric pressure. 
+```{r, message=FALSE}
+# tempature in Kelvin
+ivs$Tk <- C2K(ivs$T)
+# saturation vapor pressure in hPa
+ivs$Es <- SVP(ivs$Tk)
+# partial water vapor pressure in Pa
+ivs$E <- WVP(ivs$RH, ivs$Es)
+# absolute humidity in kg/m^3
+ivs$rho <- AH(ivs$E, ivs$Tk)
+# specific humidity in kg/kg
+ivs$q <- SH(ivs$E)
+# display data
+head(ivs)
+```
+
+Hinted by [Shaman and Kohn (20009)](http://www.pnas.org/content/106/9/3243) and [Shaman et al. (2010)](http://www.plosbiology.org/article/info%3Adoi%2F10.1371%2Fjournal.pbio.1000316), *log-linear* regression model is applied to describe the relationship between influenza A virus survival and specific humidity.
+```{r}
+# log-linear regression of 1-h infuenza A virus survival on specific humididty
+loglm <- lm(log(PVV) ~ q, data = ivs)
+summary(loglm)
+```
+The log-linear regression model is significant with a $p$-value less than 0.0001, indicating that log-linear model can well depict the association of influenza virus survival with specific humidity. But the coefficient estimate for specific humidity is $-121.5076$, which is too far from the value of $a = -180$ estimated by [Shaman et al. (2010)](http://www.plosbiology.org/article/info%3Adoi%2F10.1371%2Fjournal.pbio.1000316).
+
+The following codes draw the scatter plot of 1-h influenza A virus survival and specific humidity, with regression curve overlapped.
+
+```{r, fig.width=5.5, fig.height=5.5, fig.align='center'}
+# get fitted value to plot regression curve
+ivs$fit.val <- exp(predict(loglm))
+ivs <- ivs[with(ivs, order(q)), ]
+
+# plot percentage viable virus vs. specific humidity
+par(pty = "s")
+plot(x = ivs$q, y = ivs$PVV, col = "red", pch = 3, lwd = 3, 
+     xaxt = "n", yaxt = "n", xlim = c(0, 0.03), ylim = c(0, 100), 
+     xaxs = "i", yaxs = "i", xlab = "", ylab = "", 
+     main = "Regression of Influenza A Virus Survival\n on Specific Humidity")
+title(xlab = "Specific Humidity (kg/kg)", ylab = "Percent  Viable (%)", mgp = c(2, 1, 0))
+# plot regression curve
+lines(x = ivs$q, y = ivs$fit.val, lty = "dashed", lwd = 4)
+axis(side = 1, at = seq(0, 0.03, by = 0.01), labels = c("0", "0.01", "0.02", "0.03"), 
+     tck = 0.01, padj = -0.5)
+axis(side = 2, at = seq(0, 100, by = 20), tck = 0.01, las = 2, hadj = 0.5)
+axis(side = 3, at = seq(0, 0.03, by = 0.01), labels = FALSE, tck = 0.01)
+axis(side = 4, at = seq(0, 100, by = 20), labels = FALSE, tck = 0.01)
+legend(0.011, 95, legend = c("1 Hour Viability", "p < 0.0001"), pch = c(3, NA), 
+       col = c("red", "black"), lty = c(NA, "dashed"), lwd = c(3, 4), seg.len = 5)
+```
+The codes also reproduce the Figure 1.(B) of [Shaman et al. (2010)](http://www.plosbiology.org/article/info%3Adoi%2F10.1371%2Fjournal.pbio.1000316).
