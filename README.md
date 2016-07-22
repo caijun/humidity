@@ -21,7 +21,7 @@ Or the development version from github:
 
 ```r
 # install.packages("devtools")
-devtools::install_github("caijun/humidity", build)
+devtools::install_github("caijun/humidity", build_vignettes = TRUE)
 ```
 
 ## Contact
