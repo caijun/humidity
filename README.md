@@ -21,7 +21,7 @@ install.packages("humididty")
 Or the development version from github:
 
 ```r
-# install.packages("devtools")
+if (!requireNamespace("devtools")) install.packages("devtools")
 devtools::install_github("caijun/humidity", build_vignettes = TRUE)
 ```
 
