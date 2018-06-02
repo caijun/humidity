@@ -15,4 +15,3 @@ Mw
 \code{\link{Md}}
 }
 \keyword{datasets}
-

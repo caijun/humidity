@@ -15,4 +15,3 @@ Rw
 \code{\link{Mw}}
 }
 \keyword{datasets}
-

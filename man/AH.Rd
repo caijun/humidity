@@ -23,15 +23,14 @@ calculate absolute humidity \eqn{\rho_w} based on partial water vapor pressure \
 \dontrun{
 t <- 273.15
 Es <- SVP(t)
-e <- WVP(70, Es)
+e <- WVP2(70, Es)
 AH(e, t)
 }
 }
+\seealso{
+\code{\link{WVP1}}, \code{\link{WVP2}}, \code{\link{RH}}, \code{\link{SH}}.
+}
 \author{
 Jun Cai (\email{cai-j12@mails.tsinghua.edu.cn}), PhD candidate from
-Center for Earth System Science, Tsinghua University
+Department of Earth System Science, Tsinghua University
 }
-\seealso{
-\code{\link{WVP}}, \code{\link{SH}}.
-}
-

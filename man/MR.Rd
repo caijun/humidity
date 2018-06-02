@@ -19,16 +19,15 @@ calculate mixing ratio \eqn{\omega} based on specific humidity \eqn{q}
 \dontrun{
 t <- 273.15
 Es <- SVP(t)
-e <- WVP(70, Es)
+e <- WVP2(70, Es)
 q <- SH(e, p = 101325)
 MR(q)
 }
 }
-\author{
-Jun Cai (\email{cai-j12@mails.tsinghua.edu.cn}), PhD candidate from
-Center for Earth System Science, Tsinghua University
-}
 \seealso{
 \code{\link{SH}}.
 }
-
+\author{
+Jun Cai (\email{cai-j12@mails.tsinghua.edu.cn}), PhD candidate from
+Department of Earth System Science, Tsinghua University
+}

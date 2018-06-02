@@ -20,4 +20,3 @@ ivs
 A dataset containing airborne virus particles of influenza A for viable survival in the dark at controlled temperature and relative humidity for 1 hour after spraying.
 }
 \keyword{datasets}
-

@@ -13,7 +13,7 @@ SVP.Murray(t)
 numeric saturation vapor pressure in hectopascal (hPa) or millibar (mb)
 }
 \description{
-calculate saturation vapor pressure at temperature \eqn{t}, per the equation proposed by Murray (1967).
+calculate saturation vapor pressure \eqn{E_s} at temperature \eqn{t}, per the equation proposed by Murray (1967).
 }
 \examples{
 \dontrun{
@@ -21,14 +21,13 @@ T0 # absolute zero in Kelvin (K)
 SVP.Murray(T0)
 }
 }
-\author{
-Jun Cai (\email{cai-j12@mails.tsinghua.edu.cn}), PhD candidate from
-Center for Earth System Science, Tsinghua University
-}
 \references{
 Murray, F. W. (1967). \emph{On the Computation of Saturation Vapor Pressure}. Journal of Applied Meteorology, 6(1), 203-204.
 }
 \seealso{
 \code{\link{SVP.ClaCla}}, \code{\link{SVP}}.
 }
-
+\author{
+Jun Cai (\email{cai-j12@mails.tsinghua.edu.cn}), PhD candidate from
+Department of Earth System Science, Tsinghua University
+}

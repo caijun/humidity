@@ -1,0 +1,100 @@
+---
+title: "Humidity Measures"
+author: "Jun Cai <cai-j12@mails.tsinghua.edu.cn>"
+date: "`r Sys.Date()`"
+output: bookdown::html_document2
+bibliography: bibliography.bib
+link-citations: yes
+vignette: >
+  %\VignetteIndexEntry{Humidity Measures}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+## Saturation Vapor Pressure $e_s$ {-}
+
+[Saturation vapor pressure](http://oai.dtic.mil/oai/oai?verb=getRecord&metadataPrefix=html&identifier=AD0778316) $e_s$ is calculated from a given temperature $T$ (in $K$) by using the [Clausius-Clapeyron relation](http://en.wikipedia.org/wiki/Clausius%E2%80%93Clapeyron_relation).
+\begin{equation}
+  e_s(T) = e_s(T_0)\times \exp \left(\frac{L}{R_w}\left(\frac{1}{T_0} - \frac{1}{T}\right)\right)
+  (\#eq:1)
+\end{equation}
+where $e_s(T_0) = 6.11 hPa$ is the saturation vapor pressure at a reference temperature $T_0 = 273.15 K$, $L = 2.5 \times 10^6 J/kg$ is the [latent heat](http://en.wikipedia.org/wiki/Latent_heat) of evaporation for water, and $R_w = \frac{1000R}{M_w} = 461.52 J/(kg K)$ is the [specific gas constant](http://en.wikipedia.org/wiki/Gas_constant#Specific_gas_constant) for water vapor (where $R = 8.3144621 J / (mol K)$ is the molar [gas constant](http://en.wikipedia.org/wiki/Gas_constant) and $M_w = 18.01528 g/mol$ is the [molar mass](http://en.wikipedia.org/wiki/Molar_mass) of water vapor). More details refer to @Shaman2009.
+
+An alternative way to calculate saturation vapor pressure $e_s$ is per the equation proposed by @Murray1967.
+\begin{equation}
+  e_s = 6.1078\exp{\left[\frac{a(T - 273.16)}{T - b}\right]}
+\end{equation}
+where $\begin{cases} a = 21.8745584 \\ b = 7.66 \end{cases}$ over ice; $\begin{cases} a = 17.2693882 \\ b = 35.86 \end{cases}$ over water. 
+
+The resulting $e_s$ is in hectopascal ($hPa$) or millibar ($mb$).
+
+## Vapor Pressure $e$ {-}
+
+When given [dew point](https://en.wikipedia.org/wiki/Dew_point) $T_d$ (in $K$), the actual vapor pressure $e$ can be computed by plugging $T_d$ in place of $T$ into equation \@ref(eq:1). The resulting $e$ is in millibar ($mb$).
+
+## Relative Humidity $\psi$ {-}
+
+[Relative humidity](http://en.wikipedia.org/wiki/Humidity#Relative_humidity) $\psi$ is defined as the ratio of the partial water vapor pressure $e$ to the saturation vapor pressure $e_s$ at a given temperature $T$, which is usually expressed in $\%$ as follows
+\begin{equation}
+  \psi = \frac{e}{e_s}\times 100\%
+  (\#eq:2)
+\end{equation}
+
+Therefore, when given the saturation vapor pressure $e_s$ and relative humidity $\psi$, the partial water vapor pressure $e$ can also be easily calculated  per equation \@ref(eq:2).
+$$
+  e = \psi e_s
+$$
+The resulting $e$ is in $Pa$.
+
+## Absolute Humidity $\rho_w$ {-}
+
+[Absolute humidity](http://en.wikipedia.org/wiki/Humidity#Absolute_humidity) is the total amount of water vapor $m_w$ present in a given volume of air $V$. The definition of absolute humidity can be described as follows
+$$
+  \rho_w = \frac{m_w}{V}
+$$
+
+Water vapor can be regarded as ideal gas in the normal atmospheric temperature and atmospheric pressure. Its equation of state is
+\begin{equation}
+  e = \rho_w R_w T
+  (\#eq:3)
+\end{equation}
+
+Absolute humidity $\rho_w$ is derived by solving equation \@ref(eq:3).
+$$
+  \rho_w = \frac{e}{R_w T}
+$$
+The resulting $\rho_w$ is in $kg/m^3$.
+
+## Mixing Ratio $\omega$ {-}
+
+[Mixing ratio](http://www.geog.ucsb.edu/~joel/g266_s10/lecture_notes/chapt03/oh10_3_01/oh10_3_01.html) is the ratio of water vapor mass $m_w$ to dry air mass $m_d$, expressed in equation as follows
+$$
+  \omega = \frac{m_w}{m_d}
+$$
+
+The resulting $\omega$ is in $kg/kg$.
+
+## Specific Humidity $q$ {-}
+
+[Specific humidity](http://en.wikipedia.org/wiki/Humidity#Specific_humidity) is the ratio of water vapor mass $m_w$ to the total (i.e., including dry) air mass $m$ (namely, $m = m_w + m_d$). The definition is described as
+$$
+  q = \frac{m_w}{m} = \frac{m_w}{m_w + m_d} = \frac{\omega}{\omega + 1}
+$$
+
+Specific humidity can also be expressed in following way.
+$$
+\begin{equation}
+  q = \frac{\frac{M_w}{M_d}e}{p - (1 - \frac{M_w}{M_d})e}
+  (\#eq:4)
+\end{equation}
+$$
+where $M_d = 28.9634 g/mol$ is the molar mass of dry air; $p$ represents [atmospheric pressure](http://en.wikipedia.org/wiki/Atmospheric_pressure) and the standard atmospheric pressure is equal to $101,325 Pa$. The details of formula derivation refer to [Wikipedia](http://zh.wikipedia.org/wiki/%E6%B9%BF%E5%BA%A6#.E6.AF.94.E6.BA.BC).
+
+Substitute $\frac{M_w}{M_d} \approx 0.622$ into equation \@ref(eq:4) and simplify the formula.
+$$
+  q \approx \frac{0.622e}{p - 0.378e}
+$$
+
+The resulting $q$ is in $kg/kg$.
+
+## References

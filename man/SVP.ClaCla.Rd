@@ -13,17 +13,13 @@ SVP.ClaCla(t)
 numeric saturation vapor pressure in hectopascal (hPa) or millibar (mb)
 }
 \description{
-calculate saturation vapor pressure at temperature \eqn{t}, using the Clausius-Clapeyron equation.
+calculate saturation vapor pressure \eqn{E_s} at temperature \eqn{t}, using the Clausius-Clapeyron equation.
 }
 \examples{
 \dontrun{
 T0 # absolute zero in Kelvin (K)
 SVP.ClaCla(T0)
 }
-}
-\author{
-Jun Cai (\email{cai-j12@mails.tsinghua.edu.cn}), PhD candidate from
-Center for Earth System Science, Tsinghua University
 }
 \references{
 Shaman, J., & Kohn, M. (2009). \emph{Absolute humidity modulates influenza survival, transmission, and seasonality}. Proceedings of the National Academy of Sciences, 106(9), 3243-3248.
@@ -33,4 +29,7 @@ Wallace, J. M., & Hobbs, P. V. (2006). \emph{Atmospheric science: an introductor
 \seealso{
 \code{\link{SVP.Murray}}, \code{\link{SVP}}.
 }
-
+\author{
+Jun Cai (\email{cai-j12@mails.tsinghua.edu.cn}), PhD candidate from
+Department of Earth System Science, Tsinghua University
+}

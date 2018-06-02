@@ -4,7 +4,7 @@
 #' @return numeric temperature in degree Celsius (°C)
 #' @seealso \code{\link{C2K}}.
 #' @author Jun Cai (\email{cai-j12@@mails.tsinghua.edu.cn}), PhD candidate from
-#' Center for Earth System Science, Tsinghua University
+#' Department of Earth System Science, Tsinghua University
 #' @export
 #' @examples
 #' \dontrun{
@@ -23,7 +23,7 @@ K2C <- function(K) {
 #' @return numeric temperature in Kelvin (K)
 #' @seealso \code{\link{K2C}}.
 #' @author Jun Cai (\email{cai-j12@@mails.tsinghua.edu.cn}), PhD candidate from
-#' Center for Earth System Science, Tsinghua University
+#' Department of Earth System Science, Tsinghua University
 #' @export
 #' @examples
 #' \dontrun{
@@ -38,13 +38,13 @@ C2K <- function(C) {
 }
 
 #' @title calculate saturation vapor pressure using the Murray equation
-#' @description calculate saturation vapor pressure at temperature \eqn{t}, per the equation proposed by Murray (1967).
+#' @description calculate saturation vapor pressure \eqn{E_s} at temperature \eqn{t}, per the equation proposed by Murray (1967).
 #' @param t temperature in Kelvin (K)
 #' @return numeric saturation vapor pressure in hectopascal (hPa) or millibar (mb)
 #' @references Murray, F. W. (1967). \emph{On the Computation of Saturation Vapor Pressure}. Journal of Applied Meteorology, 6(1), 203-204.
 #' @seealso \code{\link{SVP.ClaCla}}, \code{\link{SVP}}.
 #' @author Jun Cai (\email{cai-j12@@mails.tsinghua.edu.cn}), PhD candidate from
-#' Center for Earth System Science, Tsinghua University
+#' Department of Earth System Science, Tsinghua University
 #' @export
 #' @examples
 #' \dontrun{
@@ -67,7 +67,7 @@ SVP.Murray <- function(t) {
 }
 
 #' @title calculate saturation vapor pressure using the Clausius-Clapeyron equation
-#' @description calculate saturation vapor pressure at temperature \eqn{t}, using the Clausius-Clapeyron equation.
+#' @description calculate saturation vapor pressure \eqn{E_s} at temperature \eqn{t}, using the Clausius-Clapeyron equation.
 #' @param t temperature in Kelvin (K)
 #' @return numeric saturation vapor pressure in hectopascal (hPa) or millibar (mb)
 #' @references Shaman, J., & Kohn, M. (2009). \emph{Absolute humidity modulates influenza survival, transmission, and seasonality}. Proceedings of the National Academy of Sciences, 106(9), 3243-3248.
@@ -75,7 +75,7 @@ SVP.Murray <- function(t) {
 #' Wallace, J. M., & Hobbs, P. V. (2006). \emph{Atmospheric science: an introductory survey} (Vol. 92). Academic press.
 #' @seealso \code{\link{SVP.Murray}}, \code{\link{SVP}}.
 #' @author Jun Cai (\email{cai-j12@@mails.tsinghua.edu.cn}), PhD candidate from
-#' Center for Earth System Science, Tsinghua University
+#' Department of Earth System Science, Tsinghua University
 #' @export
 #' @examples
 #' \dontrun{
@@ -91,14 +91,14 @@ SVP.ClaCla <- function(t) {
 }
 
 #' @title calculate saturation vapor pressure
-#' @description calculate saturation vapor pressure at temperature \eqn{t}, using the Clausius-Clapeyron equation or the Murray equation.
+#' @description calculate saturation vapor pressure \eqn{E_s} at temperature \eqn{t}, using the Clausius-Clapeyron equation or the Murray equation.
 #' @param t temperature in Kelvin (K) or in degree Celsius (°C)
 #' @param isK logical indicator whether temperature is in Kelvin (K). The default value is TRUE.
 #' @param formula the formula is used for calculating saturation vapor pressure. By default the Clausius-Clapeyron equation is used.
 #' @return numeric saturation vapor pressure in hectopascal (hPa) or millibar (mb)
 #' @seealso \code{\link{SVP.ClaCla}}, \code{\link{SVP.Murray}}.
 #' @author Jun Cai (\email{cai-j12@@mails.tsinghua.edu.cn}), PhD candidate from
-#' Center for Earth System Science, Tsinghua University
+#' Department of Earth System Science, Tsinghua University
 #' @export
 #' @examples
 #' \dontrun{
@@ -126,21 +126,46 @@ SVP <- function(t, isK = TRUE, formula = c("Clausius-Clapeyron", "Murray")) {
   }
 }
 
-#' @title calculate partial water vapor pressure
-#' @description calculate partial water vapor pressure \eqn{e} based on relative humdity and saturation water vapor pressure at temperature \eqn{t}
+#' @title calculate partial water vapor pressure given dew point
+#' @description calculate partial water vapor pressure \eqn{e} based on dew point \eqn{T_d}
+#' @param Td dew point in Kelvin (K) or in degree Celsius (°C)
+#' @param isK logical indicator whether temperature is in Kelvin (K). The default value is TRUE.
+#' @return numeric partial vapor pressure in hectopascal (hPa) or millibar (mb)
+#' @seealso \code{\link{SVP}}, \code{\link{SVP.ClaCla}}.
+#' @author Jun Cai (\email{cai-j12@@mails.tsinghua.edu.cn}), PhD candidate from
+#' Department of Earth System Science, Tsinghua University
+#' @export
+#' @examples
+#' \dontrun{
+#' T0 # absolute zero in Kelvin (K)
+#' WVP1(T0)
+#' }
+WVP1 <- function(Td, isK = TRUE) {
+  # check parameters
+  stopifnot(is.numeric(Td))
+
+  if (isK == FALSE) {
+    Td <- C2K(Td)
+  }
+  e <- SVP.ClaCla(Td)
+  return(e)
+}
+
+#' @title calculate partial water vapor pressure given relative humidity and saturation water vapor pressure
+#' @description calculate partial water vapor pressure \eqn{e} based on relative humdity \eqn{\psi} and saturation water vapor pressure at temperature \eqn{t}
 #' @param psi relative humidity \eqn{\psi} in percentage (\eqn{\%})
 #' @param Es saturation vapor pressure \eqn{e_s}(hPa) at temperature \eqn{t}, which can be calculated by callling \code{\link{SVP}} function.
 #' @return numeric partial water vapor pressure in Pascal (Pa)
 #' @seealso \code{\link{SVP}}, \code{\link{SVP.ClaCla}}, \code{\link{SVP.Murray}}.
 #' @author Jun Cai (\email{cai-j12@@mails.tsinghua.edu.cn}), PhD candidate from
-#' Center for Earth System Science, Tsinghua University
+#' Department of Earth System Science, Tsinghua University
 #' @export
 #' @examples
 #' \dontrun{
 #' Es <- SVP(273.15)
-#' WVP(70, Es)
+#' WVP2(70, Es)
 #' }
-WVP <- function(psi, Es) {
+WVP2 <- function(psi, Es) {
   # check parameters
   stopifnot(is.numeric(psi))
   stopifnot(is.numeric(Es))
@@ -149,21 +174,50 @@ WVP <- function(psi, Es) {
   return(e)
 }
 
+#' @title calculate relative humidity
+#' @description calculate relative humidity \eqn{\psi} based on temperature \eqn{t} and dew point \eqn{T_d}
+#' @param t temperature in Kelvin (K) or in degree Celsius (°C)
+#' @param Td dew point in Kelvin (K) or in degree Celsius (°C)
+#' @param isK logical indicator whether temperature is in Kelvin (K). The default value is TRUE.
+#' @return numeric relative humidity in %.
+#' @seealso \code{\link{AH}}, \code{\link{SH}}.
+#' @author Jun Cai (\email{cai-j12@@mails.tsinghua.edu.cn}), PhD candidate from
+#' Department of Earth System Science, Tsinghua University
+#' @export
+#' @examples
+#' \dontrun{
+#' RH(30, 15, isK = FALSE)
+#' }
+RH <- function(t, Td, isK = TRUE) {
+  # check parameters
+  stopifnot(is.numeric(t))
+  stopifnot(is.numeric(Td))
+
+  if (isK == FALSE) {
+    Td <- C2K(Td)
+    t <- C2K(t)
+  }
+  e <- SVP.ClaCla(Td)
+  Es <- SVP.ClaCla(t)
+  psi <- e / Es * 100
+  return(psi)
+}
+
 #' @title calculate absolute humidity
 #' @description calculate absolute humidity \eqn{\rho_w} based on partial water vapor pressure \eqn{e} at temperature \eqn{t}
 #' @param e partial water vapor pressure in Pascal (Pa)
 #' @param t temperature in Kelvin (K) or in degree Celsius (°C)
 #' @param isK logical indicator whether temperature is in Kelvin (K). The default value is TRUE.
 #' @return numeric absolute humidity \eqn{\rho_w} (\eqn{kg/m^3})
-#' @seealso \code{\link{WVP}}, \code{\link{SH}}.
+#' @seealso \code{\link{WVP1}}, \code{\link{WVP2}}, \code{\link{RH}}, \code{\link{SH}}.
 #' @author Jun Cai (\email{cai-j12@@mails.tsinghua.edu.cn}), PhD candidate from
-#' Center for Earth System Science, Tsinghua University
+#' Department of Earth System Science, Tsinghua University
 #' @export
 #' @examples
 #' \dontrun{
 #' t <- 273.15
 #' Es <- SVP(t)
-#' e <- WVP(70, Es)
+#' e <- WVP2(70, Es)
 #' AH(e, t)
 #' }
 AH <- function(e, t, isK = TRUE) {
@@ -184,15 +238,15 @@ AH <- function(e, t, isK = TRUE) {
 #' @param e partial water vapor pressure in Pascal (Pa)
 #' @param p atmospheric pressure in Pascal (Pa). The default is standard atmospheric pressure of 101325Pa.
 #' @return numeric specific humidity \eqn{q} (\eqn{kg/kg})
-#' @seealso \code{\link{WVP}}, \code{\link{AH}}, \code{\link{MR}}.
+#' @seealso \code{\link{WVP2}}, \code{\link{WVP2}}, \code{\link{AH}}, \code{\link{RH}}, \code{\link{MR}}.
 #' @author Jun Cai (\email{cai-j12@@mails.tsinghua.edu.cn}), PhD candidate from
-#' Center for Earth System Science, Tsinghua University
+#' Department of Earth System Science, Tsinghua University
 #' @export
 #' @examples
 #' \dontrun{
 #' t <- 273.15
 #' Es <- SVP(t)
-#' e <- WVP(70, Es)
+#' e <- WVP2(70, Es)
 #' SH(e, p = 101325)
 #' }
 SH <- function(e, p = 101325) {
@@ -211,13 +265,13 @@ SH <- function(e, p = 101325) {
 #' @return numeric mixing ratio \eqn{\omega} (\eqn{kg/kg})
 #' @seealso \code{\link{SH}}.
 #' @author Jun Cai (\email{cai-j12@@mails.tsinghua.edu.cn}), PhD candidate from
-#' Center for Earth System Science, Tsinghua University
+#' Department of Earth System Science, Tsinghua University
 #' @export
 #' @examples
 #' \dontrun{
 #' t <- 273.15
 #' Es <- SVP(t)
-#' e <- WVP(70, Es)
+#' e <- WVP2(70, Es)
 #' q <- SH(e, p = 101325)
 #' MR(q)
 #' }

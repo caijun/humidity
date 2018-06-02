@@ -15,4 +15,3 @@ Molecular weight of dry air \eqn{M_d = 28.9634g/mol}
 \code{\link{Mw}}
 }
 \keyword{datasets}
-

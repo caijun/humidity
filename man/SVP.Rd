@@ -17,18 +17,17 @@ SVP(t, isK = TRUE, formula = c("Clausius-Clapeyron", "Murray"))
 numeric saturation vapor pressure in hectopascal (hPa) or millibar (mb)
 }
 \description{
-calculate saturation vapor pressure at temperature \eqn{t}, using the Clausius-Clapeyron equation or the Murray equation.
+calculate saturation vapor pressure \eqn{E_s} at temperature \eqn{t}, using the Clausius-Clapeyron equation or the Murray equation.
 }
 \examples{
 \dontrun{
 SVP(273.15)
 }
 }
-\author{
-Jun Cai (\email{cai-j12@mails.tsinghua.edu.cn}), PhD candidate from
-Center for Earth System Science, Tsinghua University
-}
 \seealso{
 \code{\link{SVP.ClaCla}}, \code{\link{SVP.Murray}}.
 }
-
+\author{
+Jun Cai (\email{cai-j12@mails.tsinghua.edu.cn}), PhD candidate from
+Department of Earth System Science, Tsinghua University
+}

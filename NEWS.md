@@ -1,3 +1,16 @@
+# CHANGES IN humidity VERSION 0.1.2
+
+## MISC
+
+- added vignette [Humidity Measures](https://cran.r-project.org/web/packages/humidity/vignettes/humidity-measures.html)
+- updated vignettes by using bibliographies and citations, and forward-pipe operator
+
+## NEW FEATURES
+
+- added RH() function to calculate relative humidity based on temperature and dew point
+- changed WVP() into WVP2(), and added WVP1() to calculate partial water vapor pressure given dew point
+
+
 # CHANGES IN humidity VERSION 0.1.1
 
 ## MISC

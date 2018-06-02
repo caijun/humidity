@@ -21,11 +21,10 @@ T0 # absolute zero in Kelvin (K)
 C2K(T0)
 }
 }
-\author{
-Jun Cai (\email{cai-j12@mails.tsinghua.edu.cn}), PhD candidate from
-Center for Earth System Science, Tsinghua University
-}
 \seealso{
 \code{\link{K2C}}.
 }
-
+\author{
+Jun Cai (\email{cai-j12@mails.tsinghua.edu.cn}), PhD candidate from
+Department of Earth System Science, Tsinghua University
+}
