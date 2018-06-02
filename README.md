@@ -4,11 +4,11 @@
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/humidity)](http://cran.r-project.org/package=humidity)
 [![rstudio mirror downloads](http://cranlogs.r-pkg.org/badges/humidity)](https://github.com/metacran/cranlogs.app)
 
-humidity is an R package for calculating water vapor measures from temperature and relative humidity.
+humidity is an R package for calculating water vapor measures from temperature and dew point.
 
 ## Introduction
 
-Vapor pressure, absolute humidity, specific humidity, and mixing ratio are commonly used water vapor measures in meteorology. This R package provides functions for calculating saturation vapor pressure (hPa), partial water vapor pressure (Pa), absolute humidity (kg/m^3), specific humidity (kg/kg), and mixing ratio (kg/kg) from temperature (K) and relative humidity (%).
+Vapor pressure, relative humidity, absolute humidity, specific humidity, and mixing ratio are commonly used water vapor measures in meteorology. This R package provides functions for calculating saturation vapor pressure (hPa), partial water vapor pressure (Pa), relative humidity (%), absolute humidity (kg/m^3), specific humidity (kg/kg), and mixing ratio (kg/kg) from temperature (K) and dew point (K).
 
 ## Installation
 
