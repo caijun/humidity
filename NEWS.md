@@ -2,7 +2,7 @@
 
 ## MISC
 
-- added vignette [Humidity Measures](https://cran.r-project.org/web/packages/humidity/vignettes/humidity-measures.html)
+- added vignette [Humidity Measures](https://CRAN.R-project.org/package=humidity/vignettes/humidity-measures.html)
 - updated vignettes by using bibliographies and citations, and forward-pipe operator
 
 ## NEW FEATURES
@@ -19,7 +19,7 @@
 
 ## BUG FIXES
 
-- updated vignette [Regression of Influenza Virus Survival on Specific Humidity](https://cran.r-project.org/web/packages/humidity/vignettes/ivs-sh.html)
+- updated vignette [Regression of Influenza Virus Survival on Specific Humidity](https://CRAN.R-project.org/package=humidity/vignettes/ivs-sh.html)
 
 
 # CHANGES IN humidity VERSION 0.1.0
