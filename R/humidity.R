@@ -192,6 +192,7 @@ RH <- function(t, Td, isK = TRUE) {
   # check parameters
   stopifnot(is.numeric(t))
   stopifnot(is.numeric(Td))
+  stopifnot(is.logical(isK))
 
   if (isK == FALSE) {
     Td <- C2K(Td)
@@ -281,4 +282,35 @@ MR <- function(q) {
 
   omega <- q / (1 - q)
   return(omega)
+}
+
+#' @title convert specific humidity into relative humidity
+#' @description Climate models usually provide specific humidity only; however, relative humidity is used to compute \href{https://www.weather.gov/ama/heatindex}{heat index} that is really useful for health impacts studies. This function converts specific humidity \eqn{q} into relative humidity \eqn{\psi} at temperature \eqn{t} and under atmospheric pressure \eqn{q}.
+#' @param q specific humidity \eqn{q} (\eqn{kg/kg})
+#' @param t temperature in Kelvin (K) or in degree Celsius (°C)
+#' @param p atmospheric pressure in Pascal (Pa). The default is standard atmospheric pressure of 101325Pa.
+#' @param isK logical indicator whether temperature is in Kelvin (K). The default value is TRUE.
+#' @return numeric relative humidity in %.
+#' @seealso \code{\link{AH}}, \code{\link{SH}}.
+#' @author Jun Cai (\email{cai-j12@@mails.tsinghua.edu.cn}), PhD candidate from
+#' Department of Earth System Science, Tsinghua University
+#' @export
+#' @examples
+#' \dontrun{
+#' SH2RH(0.005867353, 22.25, p = 101325, isK = FALSE)
+#' }
+SH2RH <- function(q, t, p = 101325, isK = TRUE) {
+  # check parameters
+  stopifnot(is.numeric(q))
+  stopifnot(is.numeric(t))
+  stopifnot(is.numeric(p))
+  stopifnot(is.logical(isK))
+
+  if (isK == FALSE) {
+    t <- C2K(t)
+  }
+  e <- q * p / (0.622 + 0.378 * q) # in Pa
+  Es <- SVP.ClaCla(t) # in hPa
+  psi <- e / Es
+  return(psi)
 }

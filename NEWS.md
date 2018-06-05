@@ -1,3 +1,14 @@
+# CHANGES IN humidity VERSION 0.1.3
+
+## MISC
+
+- updated vignette [Humidity Measures](https://CRAN.R-project.org/package=humidity/vignettes/humidity-measures.html)
+
+## NEW FEATURES
+
+- added SH2RH() function to convert specific humidity into relative humidity
+
+
 # CHANGES IN humidity VERSION 0.1.2
 
 ## MISC

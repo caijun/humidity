@@ -48,7 +48,7 @@ The resulting $e$ is in $Pa$.
 
 ## Absolute Humidity $\rho_w$ {-}
 
-[Absolute humidity](http://en.wikipedia.org/wiki/Humidity#Absolute_humidity) is the total amount of water vapor $m_w$ present in a given volume of air $V$. The definition of absolute humidity can be described as follows
+[Absolute humidity](http://en.wikipedia.org/wiki/Humidity#Absolute_humidity) $\rho_w$ is the total amount of water vapor $m_w$ present in a given volume of air $V$. The definition of absolute humidity can be described as follows
 $$
   \rho_w = \frac{m_w}{V}
 $$
@@ -67,7 +67,7 @@ The resulting $\rho_w$ is in $kg/m^3$.
 
 ## Mixing Ratio $\omega$ {-}
 
-[Mixing ratio](http://www.conservationphysics.org/teabag/ah_mr.php) is the ratio of water vapor mass $m_w$ to dry air mass $m_d$, expressed in equation as follows
+[Mixing ratio](http://www.conservationphysics.org/teabag/ah_mr.php) $\omega$ is the ratio of water vapor mass $m_w$ to dry air mass $m_d$, expressed in equation as follows
 $$
   \omega = \frac{m_w}{m_d}
 $$
@@ -76,7 +76,7 @@ The resulting $\omega$ is in $kg/kg$.
 
 ## Specific Humidity $q$ {-}
 
-[Specific humidity](http://en.wikipedia.org/wiki/Humidity#Specific_humidity) is the ratio of water vapor mass $m_w$ to the total (i.e., including dry) air mass $m$ (namely, $m = m_w + m_d$). The definition is described as
+[Specific humidity](http://en.wikipedia.org/wiki/Humidity#Specific_humidity) $q$ is the ratio of water vapor mass $m_w$ to the total (i.e., including dry) air mass $m$ (namely, $m = m_w + m_d$). The definition is described as
 $$
   q = \frac{m_w}{m} = \frac{m_w}{m_w + m_d} = \frac{\omega}{\omega + 1}
 $$
@@ -93,8 +93,16 @@ where $M_d = 28.9634 g/mol$ is the molar mass of dry air; $p$ represents [atmosp
 Substitute $\frac{M_w}{M_d} \approx 0.622$ into equation \@ref(eq:4) and simplify the formula.
 $$
   q \approx \frac{0.622e}{p - 0.378e}
+  (\#eq:5)
 $$
-
 The resulting $q$ is in $kg/kg$.
+
+Hence, by solving equation \@ref(eq:5) we can obtain the equation for calculating the partial water vapor pressure $e$ given the specific humidity $q$ and atmospheric pressure $p$.
+
+$$
+  e \approx \frac{qp}{0.622 + 0.378q}
+  (\#eq:6)
+$$
+Substituting equations \@ref(eq:1) and \@ref(eq:6) into equation \@ref(eq:2), we can get the equation for converting specific humidity $q$ into relative humidity $\psi$ at a given temperature $T$ and under atmospheric pressure $p$.
 
 ## References
