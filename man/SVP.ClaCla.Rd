@@ -16,10 +16,8 @@ numeric saturation vapor pressure in hectopascal (hPa) or millibar (mb)
 calculate saturation vapor pressure \eqn{E_s} at temperature \eqn{t}, using the Clausius-Clapeyron equation.
 }
 \examples{
-\dontrun{
 T0 # absolute zero in Kelvin (K)
 SVP.ClaCla(T0)
-}
 }
 \references{
 Shaman, J., & Kohn, M. (2009). \emph{Absolute humidity modulates influenza survival, transmission, and seasonality}. Proceedings of the National Academy of Sciences, 106(9), 3243-3248.

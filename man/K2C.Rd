@@ -16,9 +16,7 @@ numeric temperature in degree Celsius (°C)
 convert temperature in Kelvin (K) into degree Celsius (°C)
 }
 \examples{
-\dontrun{
 K2C(0)
-}
 }
 \seealso{
 \code{\link{C2K}}.

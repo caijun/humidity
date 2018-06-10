@@ -20,9 +20,7 @@ numeric relative humidity in %.
 calculate relative humidity \eqn{\psi} based on temperature \eqn{t} and dew point \eqn{T_d}
 }
 \examples{
-\dontrun{
 RH(30, 15, isK = FALSE)
-}
 }
 \seealso{
 \code{\link{AH}}, \code{\link{SH}}.

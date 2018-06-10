@@ -20,12 +20,10 @@ numeric absolute humidity \eqn{\rho_w} (\eqn{kg/m^3})
 calculate absolute humidity \eqn{\rho_w} based on partial water vapor pressure \eqn{e} at temperature \eqn{t}
 }
 \examples{
-\dontrun{
 t <- 273.15
 Es <- SVP(t)
 e <- WVP2(70, Es)
 AH(e, t)
-}
 }
 \seealso{
 \code{\link{WVP1}}, \code{\link{WVP2}}, \code{\link{RH}}, \code{\link{SH}}.

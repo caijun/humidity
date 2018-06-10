@@ -16,10 +16,8 @@ numeric temperature in Kelvin (K)
 convert temperature in degree Celsius (°C) into Kelvin (K)
 }
 \examples{
-\dontrun{
 T0 # absolute zero in Kelvin (K)
 C2K(T0)
-}
 }
 \seealso{
 \code{\link{K2C}}.

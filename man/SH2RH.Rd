@@ -22,9 +22,7 @@ numeric relative humidity in %.
 Climate models usually provide specific humidity only; however, relative humidity is used to compute \href{https://www.weather.gov/ama/heatindex}{heat index} that is really useful for health impacts studies. This function converts specific humidity \eqn{q} into relative humidity \eqn{\psi} at temperature \eqn{t} and under atmospheric pressure \eqn{q}.
 }
 \examples{
-\dontrun{
 SH2RH(0.005867353, 22.25, p = 101325, isK = FALSE)
-}
 }
 \seealso{
 \code{\link{AH}}, \code{\link{SH}}.

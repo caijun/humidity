@@ -7,9 +7,7 @@
 #' Department of Earth System Science, Tsinghua University
 #' @export
 #' @examples
-#' \dontrun{
 #' K2C(0)
-#' }
 K2C <- function(K) {
   # check parameter
   stopifnot(is.numeric(K))
@@ -26,10 +24,8 @@ K2C <- function(K) {
 #' Department of Earth System Science, Tsinghua University
 #' @export
 #' @examples
-#' \dontrun{
 #' T0 # absolute zero in Kelvin (K)
 #' C2K(T0)
-#' }
 C2K <- function(C) {
   # check parameter
   stopifnot(is.numeric(C))
@@ -47,10 +43,8 @@ C2K <- function(C) {
 #' Department of Earth System Science, Tsinghua University
 #' @export
 #' @examples
-#' \dontrun{
 #' T0 # absolute zero in Kelvin (K)
 #' SVP.Murray(T0)
-#' }
 SVP.Murray <- function(t) {
   # check parameter
   stopifnot(is.numeric(t))
@@ -78,10 +72,8 @@ SVP.Murray <- function(t) {
 #' Department of Earth System Science, Tsinghua University
 #' @export
 #' @examples
-#' \dontrun{
 #' T0 # absolute zero in Kelvin (K)
 #' SVP.ClaCla(T0)
-#' }
 SVP.ClaCla <- function(t) {
   # check parameter
   stopifnot(is.numeric(t))
@@ -101,9 +93,7 @@ SVP.ClaCla <- function(t) {
 #' Department of Earth System Science, Tsinghua University
 #' @export
 #' @examples
-#' \dontrun{
 #' SVP(273.15)
-#' }
 SVP <- function(t, isK = TRUE, formula = c("Clausius-Clapeyron", "Murray")) {
   # check parameters
   stopifnot(is.numeric(t))
@@ -136,10 +126,8 @@ SVP <- function(t, isK = TRUE, formula = c("Clausius-Clapeyron", "Murray")) {
 #' Department of Earth System Science, Tsinghua University
 #' @export
 #' @examples
-#' \dontrun{
 #' T0 # absolute zero in Kelvin (K)
 #' WVP1(T0)
-#' }
 WVP1 <- function(Td, isK = TRUE) {
   # check parameters
   stopifnot(is.numeric(Td))
@@ -161,10 +149,8 @@ WVP1 <- function(Td, isK = TRUE) {
 #' Department of Earth System Science, Tsinghua University
 #' @export
 #' @examples
-#' \dontrun{
 #' Es <- SVP(273.15)
 #' WVP2(70, Es)
-#' }
 WVP2 <- function(psi, Es) {
   # check parameters
   stopifnot(is.numeric(psi))
@@ -185,9 +171,7 @@ WVP2 <- function(psi, Es) {
 #' Department of Earth System Science, Tsinghua University
 #' @export
 #' @examples
-#' \dontrun{
 #' RH(30, 15, isK = FALSE)
-#' }
 RH <- function(t, Td, isK = TRUE) {
   # check parameters
   stopifnot(is.numeric(t))
@@ -215,12 +199,10 @@ RH <- function(t, Td, isK = TRUE) {
 #' Department of Earth System Science, Tsinghua University
 #' @export
 #' @examples
-#' \dontrun{
 #' t <- 273.15
 #' Es <- SVP(t)
 #' e <- WVP2(70, Es)
 #' AH(e, t)
-#' }
 AH <- function(e, t, isK = TRUE) {
   # check parameters
   stopifnot(is.numeric(e))
@@ -244,12 +226,10 @@ AH <- function(e, t, isK = TRUE) {
 #' Department of Earth System Science, Tsinghua University
 #' @export
 #' @examples
-#' \dontrun{
 #' t <- 273.15
 #' Es <- SVP(t)
 #' e <- WVP2(70, Es)
 #' SH(e, p = 101325)
-#' }
 SH <- function(e, p = 101325) {
   # check parameters
   stopifnot(is.numeric(e))
@@ -269,13 +249,11 @@ SH <- function(e, p = 101325) {
 #' Department of Earth System Science, Tsinghua University
 #' @export
 #' @examples
-#' \dontrun{
 #' t <- 273.15
 #' Es <- SVP(t)
 #' e <- WVP2(70, Es)
 #' q <- SH(e, p = 101325)
 #' MR(q)
-#' }
 MR <- function(q) {
   # check parameter
   stopifnot(is.numeric(q))
@@ -296,9 +274,7 @@ MR <- function(q) {
 #' Department of Earth System Science, Tsinghua University
 #' @export
 #' @examples
-#' \dontrun{
 #' SH2RH(0.005867353, 22.25, p = 101325, isK = FALSE)
-#' }
 SH2RH <- function(q, t, p = 101325, isK = TRUE) {
   # check parameters
   stopifnot(is.numeric(q))

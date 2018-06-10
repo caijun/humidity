@@ -18,10 +18,8 @@ numeric partial water vapor pressure in Pascal (Pa)
 calculate partial water vapor pressure \eqn{e} based on relative humdity \eqn{\psi} and saturation water vapor pressure at temperature \eqn{t}
 }
 \examples{
-\dontrun{
 Es <- SVP(273.15)
 WVP2(70, Es)
-}
 }
 \seealso{
 \code{\link{SVP}}, \code{\link{SVP.ClaCla}}, \code{\link{SVP.Murray}}.

@@ -20,9 +20,7 @@ numeric saturation vapor pressure in hectopascal (hPa) or millibar (mb)
 calculate saturation vapor pressure \eqn{E_s} at temperature \eqn{t}, using the Clausius-Clapeyron equation or the Murray equation.
 }
 \examples{
-\dontrun{
 SVP(273.15)
-}
 }
 \seealso{
 \code{\link{SVP.ClaCla}}, \code{\link{SVP.Murray}}.

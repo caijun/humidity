@@ -1,7 +1,7 @@
 Package: humidity
 Type: Package
-Title: An R Package for Calculating Water Vapor Measures from Temperature and Dew Point
-Version: 0.1.3
+Title: Calculate Water Vapor Measures from Temperature and Dew Point
+Version: 0.1.4
 Date: 2018-06-02
 Authors@R: c(
     person("Jun", "Cai", email = "cai-j12@mails.tsinghua.edu.cn", role = c("aut", "cre"))

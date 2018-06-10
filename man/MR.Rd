@@ -16,13 +16,11 @@ numeric mixing ratio \eqn{\omega} (\eqn{kg/kg})
 calculate mixing ratio \eqn{\omega} based on specific humidity \eqn{q}
 }
 \examples{
-\dontrun{
 t <- 273.15
 Es <- SVP(t)
 e <- WVP2(70, Es)
 q <- SH(e, p = 101325)
 MR(q)
-}
 }
 \seealso{
 \code{\link{SH}}.
