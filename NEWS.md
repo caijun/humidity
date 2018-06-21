@@ -1,3 +1,10 @@
+# CHANGES IN humidity VERSION 0.1.4
+
+## MISC
+
+- used the URLencode() result of the URL containing "<>" characters, which resulted in the Bad Request while runing `R CMD check --as-cran` command
+
+
 # CHANGES IN humidity VERSION 0.1.3
 
 ## MISC
