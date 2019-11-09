@@ -1,0 +1,137 @@
+---
+title: "Regression of Influenza A Virus Aerosol Transmission and Survival on Specific Humidity"
+author: "Jun Cai <cai-j12@mails.tsinghua.edu.cn>"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+bibliography: bibliography.bib
+link-citations: yes
+vignette: >
+  %\VignetteIndexEntry{Regression of Influenza A Virus Aerosol Transmission and Survival on Specific Humidity}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+Through reanalysing laboratory data from previous studies [@Harper:1961; @Lowen-etal:2007; @Lowen-etal:2008], @Shaman-Kohn:2009 found that regression models using absolute humidity (AH) could explain more variability in both influenza virus transmission (IVT) and influenza virus survival (IVS) than those models using relative humidity (RH). This vignette demonstrates the functionality of **humidity** pacakge by reproducing their log-linear regressions of IVT and IVS data on specific humidity (SH).
+
+## Regression of IVT on SH
+
+Using the guinea pig model, [@Lowen-etal:2007; @Lowen-etal:2008] directly tested the hypothesis that temperature and RH impact the influenza virus transmission efficiency by performing 24 transmissionn experiments at RH from 20% to 80% and 5&deg;C, 20&deg;C, or 30&deg;C. The data from transmission experiments indicated that both cold nand dry conditions favor the aerosol transmission of influenza virus. These data are collated from the two papers and now are stored as package data of **humidity** with the name of `ivt`. In the following, the dataset `ivt` is used to explore the relationship between IVT and SH. As SH is not provided, we firstly apply functions from **humidity** package to calculate SH from temperature and RH.
+```{r}
+# load humidity package
+library(humidity)
+
+# display built-in guinea pig airborne influenza virus transmission data
+head(ivt)
+```
+
+As the temperature `T` is in degree Celsius (°C), we first apply `C2K` function to convert the temperature into Kelvin (K) before our following calculation. Then we call `SVP` and `WVP` functions to calculate saturation vapor pressure $e_s$ (hPa) and partial water vapor pressure $e$ (Pa) at temperature $T$, respectively. Finally by calling `AH`, `SH`, and `MR` functions, we can calculate humidity measures of interest, such as AH $\rho_w$ ($\mathrm{kg/m^3}$), SH $q$ (kg/kg), and mixing ratio $\omega$ (kg/kg).
+
+Note that `SVP` function provides two formulas (either **Clausius-Clapeyron equation** or **Murray equation**) for calculating saturation vapor pressure. Both results are the same and the default `formula` is "Clausius-Clapeyron", which is consistent with @Shaman-Kohn:2009. Furthermore, because [@Lowen-etal:2007; @Lowen-etal:2008] didn't give any information on the atmospheric pressure condition under which their transmission experiments were conducted, we just assume that they performed these experiments under standard atmospheric pressure. Thus, the default value of `p = 101325` Pa is used in `SH` function when calculating specific humidity.
+
+It is noted that no aerosol transmission of influenza virus was observed at 30&deg;C and all RHs. The transmission values of 0 result in the fitting failure of log-linear regression. Thus, a small quantity of 1 is added to them to avoid taking log of 0.
+```{r, message=FALSE}
+library(tidyverse)
+ivt <- ivt %>% 
+  mutate(Tk = C2K(T), # tempature in Kelvin
+         Es = SVP(Tk), # saturation vapor pressure in hPa
+         E = WVP2(RH, Es), # partial water vapor pressure in Pa
+         rho = AH(E, Tk), # absolute humidity in kg/m^3
+         q = SH(E), # specific humidity in kg/kg
+         omega = MR(q), # mixing ratio in kg/kg
+         ) %>%
+  mutate(PT = ifelse(PT == 0, 1, PT)) # add a small quantity to avoid taking log of zero
+# check the calculation results
+head(ivt)
+```
+
+Moreover, those zero transmission efficiencies have a significant influence on the coefficient estimate of SH. Therefore, instead of a linear regression model with the log transformed response variable, a GLM model with Gaussian family and log link is used to obtain a robust coefficient estimate.
+```{r}
+# log-linear regression of influenza virus airborne  transmission on specific humididty
+loglm <- glm(PT ~ q, family = gaussian(link = "log"), data = ivt)
+summary(loglm)
+```
+
+The regression coefficient of SH $q$ is significant with a $p$-value equal to 0.0019, which is the same as that annotated in Fig. 1 (F) of @Shaman-Kohn:2009. Furthermore, the coefficient estimate for SH $q$ is `r round(coef(loglm)[2], 0)`, which is very close to the value of $a = -180$ that was finally used in the functional relationship between $R_0 (t)$ and $q(t)$ per Equation 4 in @Shaman-etal:2010.
+
+The following codes plot the aerosol transmission efficiency as a function of SH with the log-linear regression curve overlapped.
+```{r, fig.width=5.5, fig.height=5.5, fig.align='center'}
+# get fitted value to plot regression curve
+ivt$fit.val <- exp(predict(loglm))
+ivt <- ivt[with(ivt, order(q)), ]
+
+# plot percentage viable virus vs. specific humidity
+par(pty = "s")
+plot(x = ivt$q, y = ivt$PT, col = "green", pch = 1, lwd = 3, 
+     xaxt = "n", yaxt = "n", xlim = c(0, 0.025), ylim = c(0, 100), 
+     xaxs = "i", yaxs = "i", xlab = "", ylab = "", 
+     main = "Influenza Virus Transmission\n Regression on Specific Humidity")
+title(xlab = "Specific Humidity (kg/kg)", ylab = "Percent  Transmission (%)", mgp = c(2, 1, 0))
+# plot regression curve
+lines(x = ivt$q, y = ivt$fit.val, lty = "dashed", lwd = 4)
+axis(side = 1, at = seq(0, 0.03, by = 0.01), labels = c("0", "0.01", "0.02", "0.03"), 
+     tck = 0.01, padj = -0.5)
+axis(side = 2, at = seq(0, 100, by = 20), tck = 0.01, las = 2, hadj = 0.5)
+axis(side = 3, at = seq(0, 0.03, by = 0.01), labels = FALSE, tck = 0.01)
+axis(side = 4, at = seq(0, 100, by = 20), labels = FALSE, tck = 0.01)
+legend(0.011, 95, legend = c("Data", "p = 0.002"), pch = c(1, NA), 
+       col = c("green", "black"), lty = c(NA, "dashed"), lwd = c(3, 4), seg.len = 5)
+```
+The above figure is also the reproduction of Figure 1.(A) of @Shaman-etal:2010.
+
+## Regression of IVS on SH
+
+@Harper:1961 tested airborne virus particles of influenza A for viable survival in the dark at controlled temperature and RH for up to 23 hour after spraying. The 1-h IVS data are extracted from the paper and now are stored as package data of **humidity** with the name of `ivs`. Using the dataset `ivs`, we explore the relationship between IVS and SH. Likewise, we first calculate various AH measures by calling corrresponding functions from **humidity** package.
+```{r, message=FALSE}
+# display built-in 1-h influenza virus surival data
+head(ivs)
+
+ivs <- ivs %>% 
+  mutate(Tk = C2K(T), # tempature in Kelvin
+         Es = SVP(Tk), # saturation vapor pressure in hPa
+         E = WVP2(RH, Es), # partial water vapor pressure in Pa
+         rho = AH(E, Tk), # absolute humidity in kg/m^3
+         q = SH(E), # specific humidity in kg/kg
+         omega = MR(q), # mixing ratio in kg/kg
+         )
+# check the calculation results
+head(ivs)
+```
+
+As the percentages of viable virus are all $\gt 0$, the coefficient estimates using a linear model with log-transformed response variable are close to those estimated from a GLM model with Gaussian family and log link (results not shown). Herein, we present the results from the former model.
+```{r}
+# log-linear regression of 1-h infuenza A virus survival on specific humididty
+loglm <- lm(log(PV) ~ q, data = ivs)
+summary(loglm)
+```
+The regression coefficient of SH $q$ is significant with $p < 0.0001$ being the same as the $p$-value indicated in Figure 1.(B) of @Shaman-etal:2010.
+
+The following codes draw the scatter plot of 1-h IVS vs. SH with the log-linear regression curve overlapped, which also reproduce Figure 1.(B) of @Shaman-etal:2010.
+
+```{r, fig.width=5.5, fig.height=5.5, fig.align='center'}
+# get fitted value to plot regression curve
+ivs$fit.val <- exp(predict(loglm))
+ivs <- ivs[with(ivs, order(q)), ]
+
+# plot percentage viable virus vs. specific humidity
+par(pty = "s")
+plot(x = ivs$q, y = ivs$PV, col = "red", pch = 3, lwd = 3, 
+     xaxt = "n", yaxt = "n", xlim = c(0, 0.03), ylim = c(0, 100), 
+     xaxs = "i", yaxs = "i", xlab = "", ylab = "", 
+     main = "Influenza Virus Survival\n Regression on Specific Humidity")
+title(xlab = "Specific Humidity (kg/kg)", ylab = "Percent  Viable (%)", mgp = c(2, 1, 0))
+# plot regression curve
+lines(x = ivs$q, y = ivs$fit.val, lty = "dashed", lwd = 4)
+axis(side = 1, at = seq(0, 0.03, by = 0.01), labels = c("0", "0.01", "0.02", "0.03"), 
+     tck = 0.01, padj = -0.5)
+axis(side = 2, at = seq(0, 100, by = 20), tck = 0.01, las = 2, hadj = 0.5)
+axis(side = 3, at = seq(0, 0.03, by = 0.01), labels = FALSE, tck = 0.01)
+axis(side = 4, at = seq(0, 100, by = 20), labels = FALSE, tck = 0.01)
+legend(0.011, 95, legend = c("1 Hour Viability", "p < 0.0001"), pch = c(3, NA), 
+       col = c("red", "black"), lty = c(NA, "dashed"), lwd = c(3, 4), seg.len = 5)
+```
+
+As shown in the above two log-linear regressions of IVT and IVS data on SH, the almost equivalent coefficient estimates and the similar $p$-values verify the correctness of various AH measures calculated by **humidity** package.
+
+The initial version of this vignette included only the log-linear regression of IVS on SH. Thank Dr. Andrei R. Akhmetzhanov from Hokkaido University, Japan for pointing out that the final choice of $a = -180$ in @Shaman-etal:2010 was based on the log-linear regression of IVT on SH.
+
+## References

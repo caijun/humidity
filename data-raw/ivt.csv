@@ -1,0 +1,27 @@
+Temperature,Relative Humidity,Percentage Transmission,Source
+# unit: degree Celsius, %, %
+# Aerosol transmission (in %) of influenza virus from infected guinea pigs to exposed guinea pigs is measured by the proportion of four naive animals contracted infection.
+20,20,100,Lowen.etal-2007
+20,20,75,Lowen.etal-2007
+20,35,100,Lowen.etal-2007
+20,35,100,Lowen.etal-2007
+20,50,25,Lowen.etal-2007
+20,50,25,Lowen.etal-2007
+20,65,75,Lowen.etal-2007
+20,65,75,Lowen.etal-2007
+20,80,0,Lowen.etal-2007
+20,80,0,Lowen.etal-2007
+5,35,100,Lowen.etal-2007
+5,35,100,Lowen.etal-2007
+5,50,100,Lowen.etal-2007
+5,50,75,Lowen.etal-2007
+5,65,50,Lowen.etal-2007
+5,65,50,Lowen.etal-2007
+5,80,50,Lowen.etal-2007
+5,80,50,Lowen.etal-2007
+30,35,0,Lowen.etal-2007
+30,35,0,Lowen.etal-2007
+30,20,0,Lowen.etal-2008
+30,50,0,Lowen.etal-2008
+30,65,0,Lowen.etal-2008
+30,80,0,Lowen.etal-2008

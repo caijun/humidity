@@ -18,9 +18,9 @@ vignette: >
   e_s(T) = e_s(T_0)\times \exp \left(\frac{L}{R_w}\left(\frac{1}{T_0} - \frac{1}{T}\right)\right)
   (\#eq:1)
 \end{equation}
-where $e_s(T_0) = 6.11 hPa$ is the saturation vapor pressure at a reference temperature $T_0 = 273.15 K$, $L = 2.5 \times 10^6 J/kg$ is the [latent heat](http://en.wikipedia.org/wiki/Latent_heat) of evaporation for water, and $R_w = \frac{1000R}{M_w} = 461.52 J/(kg K)$ is the [specific gas constant](http://en.wikipedia.org/wiki/Gas_constant#Specific_gas_constant) for water vapor (where $R = 8.3144621 J / (mol K)$ is the molar [gas constant](http://en.wikipedia.org/wiki/Gas_constant) and $M_w = 18.01528 g/mol$ is the [molar mass](http://en.wikipedia.org/wiki/Molar_mass) of water vapor). More details refer to @Shaman2009.
+where $e_s(T_0) = 6.11 hPa$ is the saturation vapor pressure at a reference temperature $T_0 = 273.15 K$, $L = 2.5 \times 10^6 J/kg$ is the [latent heat](http://en.wikipedia.org/wiki/Latent_heat) of evaporation for water, and $R_w = \frac{1000R}{M_w} = 461.52 J/(kg K)$ is the [specific gas constant](http://en.wikipedia.org/wiki/Gas_constant#Specific_gas_constant) for water vapor (where $R = 8.3144621 J / (mol K)$ is the molar [gas constant](http://en.wikipedia.org/wiki/Gas_constant) and $M_w = 18.01528 g/mol$ is the [molar mass](http://en.wikipedia.org/wiki/Molar_mass) of water vapor). More details refer to @Shaman-Kohn:2009.
 
-An alternative way to calculate saturation vapor pressure $e_s$ is per the equation proposed by @Murray1967.
+An alternative way to calculate saturation vapor pressure $e_s$ is per the equation proposed by @Murray:1967.
 \begin{equation}
   e_s = 6.1078\exp{\left[\frac{a(T - 273.16)}{T - b}\right]}
 \end{equation}

@@ -8,7 +8,7 @@
 \itemize{
   \item T: temperature in degree Celsius (7.5--32.0)
   \item RH: relative humidity in percentage (20--82)
-  \item PVV: percentage of viable virus (6.6--78.0)
+  \item PV: percentage of viable virus (6.6--78.0)
 }}
 \source{
 Harper, G. J. (1961). \emph{Airborne micro-organisms: survival tests with four viruses}. Journal of Hygiene, 59(04), 479-486.

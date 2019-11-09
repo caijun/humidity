@@ -1,3 +1,10 @@
+### CHANGES IN humidity VERSION 0.1.5
+
+#### NEW FEATURES
+
+- add package data `ivt` and update the vignette with the log-linear regression of guinea pig airborne influenza virus transmission data on specific humidity
+
+
 ### CHANGES IN humidity VERSION 0.1.4
 
 #### MISC
