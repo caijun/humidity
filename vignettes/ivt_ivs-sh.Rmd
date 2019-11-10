@@ -1,12 +1,12 @@
 ---
-title: "Regression of Influenza A Virus Aerosol Transmission and Survival on Specific Humidity"
+title: "Regressions of Influenza A Virus Aerosol Transmission and Survival on Specific Humidity"
 author: "Jun Cai <cai-j12@mails.tsinghua.edu.cn>"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 bibliography: bibliography.bib
 link-citations: yes
 vignette: >
-  %\VignetteIndexEntry{Regression of Influenza A Virus Aerosol Transmission and Survival on Specific Humidity}
+  %\VignetteIndexEntry{Regressions of Influenza A Virus Aerosol Transmission and Survival on Specific Humidity}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---

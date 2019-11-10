@@ -2,7 +2,7 @@ Package: humidity
 Type: Package
 Title: Calculate Water Vapor Measures from Temperature and Dew Point
 Version: 0.1.5
-Date: 2019-11-09
+Date: 2019-11-10
 Authors@R: c(
     person("Jun", "Cai", role = c("aut", "cre"), 
     email = "cai-j12@mails.tsinghua.edu.cn",  comment = c(ORCID = "0000-0001-9495-1226"))
