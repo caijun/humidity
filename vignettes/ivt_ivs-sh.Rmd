@@ -21,7 +21,7 @@ Using the guinea pig model, [@Lowen-etal:2007; @Lowen-etal:2008] directly tested
 library(humidity)
 
 # display built-in guinea pig airborne influenza virus transmission data
-head(ivt)
+str(ivt)
 ```
 
 As the temperature `T` is in degree Celsius (°C), we first apply `C2K` function to convert the temperature into Kelvin (K) before our following calculation. Then we call `SVP` and `WVP` functions to calculate saturation vapor pressure $e_s$ (hPa) and partial water vapor pressure $e$ (Pa) at temperature $T$, respectively. Finally by calling `AH`, `SH`, and `MR` functions, we can calculate humidity measures of interest, such as AH $\rho_w$ ($\mathrm{kg/m^3}$), SH $q$ (kg/kg), and mixing ratio $\omega$ (kg/kg).
@@ -83,7 +83,7 @@ The above figure is also the reproduction of Figure 1.(A) of @Shaman-etal:2010.
 @Harper:1961 tested airborne virus particles of influenza A for viable survival in the dark at controlled temperature and RH for up to 23 hour after spraying. The 1-h IVS data are extracted from the paper and now are stored as package data of **humidity** with the name of `ivs`. Using the dataset `ivs`, we explore the relationship between IVS and SH. Likewise, we first calculate various AH measures by calling corrresponding functions from **humidity** package.
 ```{r, message=FALSE}
 # display built-in 1-h influenza virus surival data
-head(ivs)
+str(ivs)
 
 ivs <- ivs %>% 
   mutate(Tk = C2K(T), # tempature in Kelvin
