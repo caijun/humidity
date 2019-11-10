@@ -30,7 +30,7 @@ Note that `SVP` function provides two formulas (either **Clausius-Clapeyron equa
 
 It is noted that no aerosol transmission of influenza virus was observed at 30&deg;C and all RHs. The transmission values of 0 result in the fitting failure of log-linear regression. Thus, a small quantity of 1 is added to them to avoid taking log of 0.
 ```{r, message=FALSE}
-library(tidyverse)
+library(dplyr)
 ivt <- ivt %>% 
   mutate(Tk = C2K(T), # tempature in Kelvin
          Es = SVP(Tk), # saturation vapor pressure in hPa
