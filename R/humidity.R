@@ -102,7 +102,7 @@ SVP <- function(t, isK = TRUE, formula = c("Clausius-Clapeyron", "Murray")) {
 
   # vectorize
   if (length(t) > 1) {
-    return(sapply(t, SVP))
+    return(sapply(t, SVP, isK = isK, formula = formula))
   }
 
   if (isK == FALSE) {

@@ -5,6 +5,7 @@
 - Package CITATION file uses `bibentry()` instead of old-style `citEntry()`.
 - fixed invalid URLs
 - fixed incorrect descript of `T0`
+- fixed a bug in the vectorization step inside `SVP()`
 
 ### CHANGES IN humidity VERSION 0.1.5
 
