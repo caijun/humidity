@@ -16,7 +16,7 @@ numeric saturation vapor pressure in hectopascal (hPa) or millibar (mb)
 calculate saturation vapor pressure \eqn{E_s} at temperature \eqn{t}, per the equation proposed by Murray (1967).
 }
 \examples{
-T0 # absolute zero in Kelvin (K)
+T0 # zero degrees Celsius in Kelvin (K)
 SVP.Murray(T0)
 }
 \references{

@@ -2,10 +2,10 @@
 % Please edit documentation in R/constant.R
 \name{T0}
 \alias{T0}
-\title{Absolute zero}
+\title{Zero degrees Celsius in Kelvin}
 \usage{
 T0
 }
 \description{
-\href{https://en.wikipedia.org/wiki/Absolute_zero}{Absolute zero} in Kelvin \eqn{T_0} (K)
+Temperature corresponding to 0 degrees Celsius on the Kelvin scale.
 }

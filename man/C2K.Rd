@@ -16,7 +16,7 @@ numeric temperature in Kelvin (K)
 convert temperature in degree Celsius (°C) into Kelvin (K)
 }
 \examples{
-T0 # absolute zero in Kelvin (K)
+T0 # zero degrees Celsius in Kelvin (K)
 C2K(T0)
 }
 \seealso{

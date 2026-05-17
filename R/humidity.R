@@ -24,7 +24,7 @@ K2C <- function(K) {
 #' the School of Public Health, Fudan University
 #' @export
 #' @examples
-#' T0 # absolute zero in Kelvin (K)
+#' T0 # zero degrees Celsius in Kelvin (K)
 #' C2K(T0)
 C2K <- function(C) {
   # check parameter
@@ -43,7 +43,7 @@ C2K <- function(C) {
 #' the School of Public Health, Fudan University
 #' @export
 #' @examples
-#' T0 # absolute zero in Kelvin (K)
+#' T0 # zero degrees Celsius in Kelvin (K)
 #' SVP.Murray(T0)
 SVP.Murray <- function(t) {
   # check parameter
@@ -72,7 +72,7 @@ SVP.Murray <- function(t) {
 #' the School of Public Health, Fudan University
 #' @export
 #' @examples
-#' T0 # absolute zero in Kelvin (K)
+#' T0 # zero degrees Celsius in Kelvin (K)
 #' SVP.ClaCla(T0)
 SVP.ClaCla <- function(t) {
   # check parameter
@@ -126,7 +126,7 @@ SVP <- function(t, isK = TRUE, formula = c("Clausius-Clapeyron", "Murray")) {
 #' the School of Public Health, Fudan University
 #' @export
 #' @examples
-#' T0 # absolute zero in Kelvin (K)
+#' T0 # zero degrees Celsius in Kelvin (K)
 #' WVP1(T0)
 WVP1 <- function(Td, isK = TRUE) {
   # check parameters
@@ -165,7 +165,7 @@ WVP2 <- function(psi, Es) {
 #' @param t temperature in Kelvin (K) or in degree Celsius (°C)
 #' @param Td dew point in Kelvin (K) or in degree Celsius (°C)
 #' @param isK logical indicator whether temperature is in Kelvin (K). The default value is TRUE.
-#' @return numeric relative humidity in %.
+#' @return numeric relative humidity in \%.
 #' @seealso \code{\link{AH}}, \code{\link{SH}}.
 #' @author Jun Cai (\email{caijun@@fudan.edu.cn}), Young Research Fellow at
 #' the School of Public Health, Fudan University
@@ -268,7 +268,7 @@ MR <- function(q) {
 #' @param t temperature in Kelvin (K) or in degree Celsius (°C)
 #' @param p atmospheric pressure in Pascal (Pa). The default is standard atmospheric pressure of 101325Pa.
 #' @param isK logical indicator whether temperature is in Kelvin (K). The default value is TRUE.
-#' @return numeric relative humidity in %.
+#' @return numeric relative humidity in \%.
 #' @seealso \code{\link{AH}}, \code{\link{SH}}.
 #' @author Jun Cai (\email{caijun@@fudan.edu.cn}), Young Research Fellow at
 #' the School of Public Health, Fudan University

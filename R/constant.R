@@ -1,10 +1,10 @@
-#' @title Absolute zero
-#' @description  \href{https://en.wikipedia.org/wiki/Absolute_zero}{Absolute zero} in Kelvin \eqn{T_0} (K)
+#' @title Zero degrees Celsius in Kelvin
+#' @description  Temperature corresponding to 0 degrees Celsius on the Kelvin scale.
 #' @export
 T0 <- 273.15
 
-#' @title Saturation vapor pressure at absolute zero (hPa)
-#' @description  \eqn{e_s(T_0) = 6.11hPa} is the saturation vapor pressure at the absolute zero \eqn{T_0 = 273.15K}.
+#' @title Saturation vapor pressure (hPa) at 0 degrees Celsius
+#' @description  \eqn{e_s(T_0) = 6.11hPa} is the saturation vapor pressure at 0 degrees Celsius (\eqn{T_0 = 273.15K}).
 #' @seealso \code{\link{T0}}
 #' @export
 Es.T0 <- 6.11

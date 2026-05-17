@@ -14,7 +14,7 @@ RH(t, Td, isK = TRUE)
 \item{isK}{logical indicator whether temperature is in Kelvin (K). The default value is TRUE.}
 }
 \value{
-numeric relative humidity in %.
+numeric relative humidity in \%.
 }
 \description{
 calculate relative humidity \eqn{\psi} based on temperature \eqn{t} and dew point \eqn{T_d}

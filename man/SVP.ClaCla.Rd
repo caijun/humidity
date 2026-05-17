@@ -16,7 +16,7 @@ numeric saturation vapor pressure in hectopascal (hPa) or millibar (mb)
 calculate saturation vapor pressure \eqn{E_s} at temperature \eqn{t}, using the Clausius-Clapeyron equation.
 }
 \examples{
-T0 # absolute zero in Kelvin (K)
+T0 # zero degrees Celsius in Kelvin (K)
 SVP.ClaCla(T0)
 }
 \references{

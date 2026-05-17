@@ -18,7 +18,7 @@ numeric partial vapor pressure in hectopascal (hPa) or millibar (mb)
 calculate partial water vapor pressure \eqn{e} based on dew point \eqn{T_d}
 }
 \examples{
-T0 # absolute zero in Kelvin (K)
+T0 # zero degrees Celsius in Kelvin (K)
 WVP1(T0)
 }
 \seealso{

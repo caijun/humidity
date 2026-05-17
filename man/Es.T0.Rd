@@ -2,12 +2,12 @@
 % Please edit documentation in R/constant.R
 \name{Es.T0}
 \alias{Es.T0}
-\title{Saturation vapor pressure at absolute zero (hPa)}
+\title{Saturation vapor pressure (hPa) at 0 degrees Celsius}
 \usage{
 Es.T0
 }
 \description{
-\eqn{e_s(T_0) = 6.11hPa} is the saturation vapor pressure at the absolute zero \eqn{T_0 = 273.15K}.
+\eqn{e_s(T_0) = 6.11hPa} is the saturation vapor pressure at 0 degrees Celsius (\eqn{T_0 = 273.15K}).
 }
 \seealso{
 \code{\link{T0}}

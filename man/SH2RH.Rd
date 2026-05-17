@@ -16,7 +16,7 @@ SH2RH(q, t, p = 101325, isK = TRUE)
 \item{isK}{logical indicator whether temperature is in Kelvin (K). The default value is TRUE.}
 }
 \value{
-numeric relative humidity in %.
+numeric relative humidity in \%.
 }
 \description{
 Climate models usually provide specific humidity only; however, relative humidity is used to compute \href{https://www.weather.gov/ama/heatindex}{heat index} that is really useful for health impacts studies. This function converts specific humidity \eqn{q} into relative humidity \eqn{\psi} at temperature \eqn{t} and under atmospheric pressure \eqn{q}.
