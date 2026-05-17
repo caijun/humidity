@@ -3,8 +3,8 @@
 #' @param K temperature in Kelvin (K)
 #' @return numeric temperature in degree Celsius (°C)
 #' @seealso \code{\link{C2K}}.
-#' @author Jun Cai (\email{cai-j12@@mails.tsinghua.edu.cn}), PhD candidate from
-#' Department of Earth System Science, Tsinghua University
+#' @author Jun Cai (\email{caijun@@fudan.edu.cn}), Young Research Fellow at
+#' the School of Public Health, Fudan University
 #' @export
 #' @examples
 #' K2C(0)
@@ -20,8 +20,8 @@ K2C <- function(K) {
 #' @param C temperature in degree Celsius (°C)
 #' @return numeric temperature in Kelvin (K)
 #' @seealso \code{\link{K2C}}.
-#' @author Jun Cai (\email{cai-j12@@mails.tsinghua.edu.cn}), PhD candidate from
-#' Department of Earth System Science, Tsinghua University
+#' @author Jun Cai (\email{caijun@@fudan.edu.cn}), Young Research Fellow at
+#' the School of Public Health, Fudan University
 #' @export
 #' @examples
 #' T0 # absolute zero in Kelvin (K)
@@ -39,8 +39,8 @@ C2K <- function(C) {
 #' @return numeric saturation vapor pressure in hectopascal (hPa) or millibar (mb)
 #' @references Murray, F. W. (1967). \emph{On the Computation of Saturation Vapor Pressure}. Journal of Applied Meteorology, 6(1), 203-204.
 #' @seealso \code{\link{SVP.ClaCla}}, \code{\link{SVP}}.
-#' @author Jun Cai (\email{cai-j12@@mails.tsinghua.edu.cn}), PhD candidate from
-#' Department of Earth System Science, Tsinghua University
+#' @author Jun Cai (\email{caijun@@fudan.edu.cn}), Young Research Fellow at
+#' the School of Public Health, Fudan University
 #' @export
 #' @examples
 #' T0 # absolute zero in Kelvin (K)
@@ -68,8 +68,8 @@ SVP.Murray <- function(t) {
 #'
 #' Wallace, J. M., & Hobbs, P. V. (2006). \emph{Atmospheric science: an introductory survey} (Vol. 92). Academic press.
 #' @seealso \code{\link{SVP.Murray}}, \code{\link{SVP}}.
-#' @author Jun Cai (\email{cai-j12@@mails.tsinghua.edu.cn}), PhD candidate from
-#' Department of Earth System Science, Tsinghua University
+#' @author Jun Cai (\email{caijun@@fudan.edu.cn}), Young Research Fellow at
+#' the School of Public Health, Fudan University
 #' @export
 #' @examples
 #' T0 # absolute zero in Kelvin (K)
@@ -89,8 +89,8 @@ SVP.ClaCla <- function(t) {
 #' @param formula the formula is used for calculating saturation vapor pressure. By default the Clausius-Clapeyron equation is used.
 #' @return numeric saturation vapor pressure in hectopascal (hPa) or millibar (mb)
 #' @seealso \code{\link{SVP.ClaCla}}, \code{\link{SVP.Murray}}.
-#' @author Jun Cai (\email{cai-j12@@mails.tsinghua.edu.cn}), PhD candidate from
-#' Department of Earth System Science, Tsinghua University
+#' @author Jun Cai (\email{caijun@@fudan.edu.cn}), Young Research Fellow at
+#' the School of Public Health, Fudan University
 #' @export
 #' @examples
 #' SVP(273.15)
@@ -122,8 +122,8 @@ SVP <- function(t, isK = TRUE, formula = c("Clausius-Clapeyron", "Murray")) {
 #' @param isK logical indicator whether temperature is in Kelvin (K). The default value is TRUE.
 #' @return numeric partial vapor pressure in hectopascal (hPa) or millibar (mb)
 #' @seealso \code{\link{SVP}}, \code{\link{SVP.ClaCla}}.
-#' @author Jun Cai (\email{cai-j12@@mails.tsinghua.edu.cn}), PhD candidate from
-#' Department of Earth System Science, Tsinghua University
+#' @author Jun Cai (\email{caijun@@fudan.edu.cn}), Young Research Fellow at
+#' the School of Public Health, Fudan University
 #' @export
 #' @examples
 #' T0 # absolute zero in Kelvin (K)
@@ -145,8 +145,8 @@ WVP1 <- function(Td, isK = TRUE) {
 #' @param Es saturation vapor pressure \eqn{e_s}(hPa) at temperature \eqn{t}, which can be calculated by callling \code{\link{SVP}} function.
 #' @return numeric partial water vapor pressure in Pascal (Pa)
 #' @seealso \code{\link{SVP}}, \code{\link{SVP.ClaCla}}, \code{\link{SVP.Murray}}.
-#' @author Jun Cai (\email{cai-j12@@mails.tsinghua.edu.cn}), PhD candidate from
-#' Department of Earth System Science, Tsinghua University
+#' @author Jun Cai (\email{caijun@@fudan.edu.cn}), Young Research Fellow at
+#' the School of Public Health, Fudan University
 #' @export
 #' @examples
 #' Es <- SVP(273.15)
@@ -167,8 +167,8 @@ WVP2 <- function(psi, Es) {
 #' @param isK logical indicator whether temperature is in Kelvin (K). The default value is TRUE.
 #' @return numeric relative humidity in %.
 #' @seealso \code{\link{AH}}, \code{\link{SH}}.
-#' @author Jun Cai (\email{cai-j12@@mails.tsinghua.edu.cn}), PhD candidate from
-#' Department of Earth System Science, Tsinghua University
+#' @author Jun Cai (\email{caijun@@fudan.edu.cn}), Young Research Fellow at
+#' the School of Public Health, Fudan University
 #' @export
 #' @examples
 #' RH(30, 15, isK = FALSE)
@@ -195,8 +195,8 @@ RH <- function(t, Td, isK = TRUE) {
 #' @param isK logical indicator whether temperature is in Kelvin (K). The default value is TRUE.
 #' @return numeric absolute humidity \eqn{\rho_w} (\eqn{kg/m^3})
 #' @seealso \code{\link{WVP1}}, \code{\link{WVP2}}, \code{\link{RH}}, \code{\link{SH}}.
-#' @author Jun Cai (\email{cai-j12@@mails.tsinghua.edu.cn}), PhD candidate from
-#' Department of Earth System Science, Tsinghua University
+#' @author Jun Cai (\email{caijun@@fudan.edu.cn}), Young Research Fellow at
+#' the School of Public Health, Fudan University
 #' @export
 #' @examples
 #' t <- 273.15
@@ -222,8 +222,8 @@ AH <- function(e, t, isK = TRUE) {
 #' @param p atmospheric pressure in Pascal (Pa). The default is standard atmospheric pressure of 101325Pa.
 #' @return numeric specific humidity \eqn{q} (\eqn{kg/kg})
 #' @seealso \code{\link{WVP2}}, \code{\link{WVP2}}, \code{\link{AH}}, \code{\link{RH}}, \code{\link{MR}}.
-#' @author Jun Cai (\email{cai-j12@@mails.tsinghua.edu.cn}), PhD candidate from
-#' Department of Earth System Science, Tsinghua University
+#' @author Jun Cai (\email{caijun@@fudan.edu.cn}), Young Research Fellow at
+#' the School of Public Health, Fudan University
 #' @export
 #' @examples
 #' t <- 273.15
@@ -245,8 +245,8 @@ SH <- function(e, p = 101325) {
 #' @param q specific humidity \eqn{q} (\eqn{kg/kg})
 #' @return numeric mixing ratio \eqn{\omega} (\eqn{kg/kg})
 #' @seealso \code{\link{SH}}.
-#' @author Jun Cai (\email{cai-j12@@mails.tsinghua.edu.cn}), PhD candidate from
-#' Department of Earth System Science, Tsinghua University
+#' @author Jun Cai (\email{caijun@@fudan.edu.cn}), Young Research Fellow at
+#' the School of Public Health, Fudan University
 #' @export
 #' @examples
 #' t <- 273.15
@@ -270,8 +270,8 @@ MR <- function(q) {
 #' @param isK logical indicator whether temperature is in Kelvin (K). The default value is TRUE.
 #' @return numeric relative humidity in %.
 #' @seealso \code{\link{AH}}, \code{\link{SH}}.
-#' @author Jun Cai (\email{cai-j12@@mails.tsinghua.edu.cn}), PhD candidate from
-#' Department of Earth System Science, Tsinghua University
+#' @author Jun Cai (\email{caijun@@fudan.edu.cn}), Young Research Fellow at
+#' the School of Public Health, Fudan University
 #' @export
 #' @examples
 #' SH2RH(0.005867353, 22.25, p = 101325, isK = FALSE)

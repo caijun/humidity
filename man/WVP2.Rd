@@ -25,6 +25,6 @@ WVP2(70, Es)
 \code{\link{SVP}}, \code{\link{SVP.ClaCla}}, \code{\link{SVP.Murray}}.
 }
 \author{
-Jun Cai (\email{cai-j12@mails.tsinghua.edu.cn}), PhD candidate from
-Department of Earth System Science, Tsinghua University
+Jun Cai (\email{caijun@fudan.edu.cn}), Young Research Fellow at
+the School of Public Health, Fudan University
 }

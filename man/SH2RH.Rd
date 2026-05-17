@@ -28,6 +28,6 @@ SH2RH(0.005867353, 22.25, p = 101325, isK = FALSE)
 \code{\link{AH}}, \code{\link{SH}}.
 }
 \author{
-Jun Cai (\email{cai-j12@mails.tsinghua.edu.cn}), PhD candidate from
-Department of Earth System Science, Tsinghua University
+Jun Cai (\email{caijun@fudan.edu.cn}), Young Research Fellow at
+the School of Public Health, Fudan University
 }

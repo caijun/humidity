@@ -1,6 +1,6 @@
 ---
 title: "Humidity Measures"
-author: "Jun Cai <cai-j12@mails.tsinghua.edu.cn>"
+author: "Jun Cai <caijun@fudan.edu.cn>"
 date: "`r Sys.Date()`"
 output: bookdown::html_document2
 bibliography: bibliography.bib
@@ -13,12 +13,12 @@ vignette: >
 
 ## Saturation Vapor Pressure $e_s$ {-}
 
-[Saturation vapor pressure](http://glossary.ametsoc.org/wiki/Saturation_vapor_pressure) $e_s$ is calculated from a given temperature $T$ (in $K$) by using the [Clausius-Clapeyron relation](http://en.wikipedia.org/wiki/Clausius%E2%80%93Clapeyron_relation).
+[Saturation vapor pressure](https://glossary.ametsoc.org/wiki/saturation-vapor-pressure/) $e_s$ is calculated from a given temperature $T$ (in $K$) by using the [Clausius-Clapeyron equation](https://glossary.ametsoc.org/wiki/clausius-clapeyron-equation/).
 \begin{equation}
   e_s(T) = e_s(T_0)\times \exp \left(\frac{L}{R_w}\left(\frac{1}{T_0} - \frac{1}{T}\right)\right)
   (\#eq:1)
 \end{equation}
-where $e_s(T_0) = 6.11 hPa$ is the saturation vapor pressure at a reference temperature $T_0 = 273.15 K$, $L = 2.5 \times 10^6 J/kg$ is the [latent heat](http://en.wikipedia.org/wiki/Latent_heat) of evaporation for water, and $R_w = \frac{1000R}{M_w} = 461.52 J/(kg K)$ is the [specific gas constant](http://en.wikipedia.org/wiki/Gas_constant#Specific_gas_constant) for water vapor (where $R = 8.3144621 J / (mol K)$ is the molar [gas constant](http://en.wikipedia.org/wiki/Gas_constant) and $M_w = 18.01528 g/mol$ is the [molar mass](http://en.wikipedia.org/wiki/Molar_mass) of water vapor). More details refer to @Shaman-Kohn:2009.
+where $e_s(T_0) = 6.11 hPa$ is the saturation vapor pressure at a reference temperature $T_0 = 273.15 K$, $L = 2.5 \times 10^6 J/kg$ is the [latent heat](https://en.wikipedia.org/wiki/Latent_heat) of evaporation for water, and $R_w = \frac{1000R}{M_w} = 461.52 J/(kg K)$ is the [specific gas constant](https://en.wikipedia.org/wiki/Gas_constant#Specific_gas_constant) for water vapor (where $R = 8.3144621 J / (mol K)$ is the molar [gas constant](https://en.wikipedia.org/wiki/Gas_constant) and $M_w = 18.01528 g/mol$ is the [molar mass](https://en.wikipedia.org/wiki/Molar_mass) of water vapor). More details refer to @Shaman-Kohn:2009.
 
 An alternative way to calculate saturation vapor pressure $e_s$ is per the equation proposed by @Murray:1967.
 \begin{equation}
@@ -34,7 +34,7 @@ When given [dew point](https://en.wikipedia.org/wiki/Dew_point) $T_d$ (in $K$), 
 
 ## Relative Humidity $\psi$ {-}
 
-[Relative humidity](http://en.wikipedia.org/wiki/Humidity#Relative_humidity) $\psi$ is defined as the ratio of the partial water vapor pressure $e$ to the saturation vapor pressure $e_s$ at a given temperature $T$, which is usually expressed in $\%$ as follows
+[Relative humidity](https://en.wikipedia.org/wiki/Humidity#Relative_humidity) $\psi$ is defined as the ratio of the partial water vapor pressure $e$ to the saturation vapor pressure $e_s$ at a given temperature $T$, which is usually expressed in $\%$ as follows
 \begin{equation}
   \psi = \frac{e}{e_s}\times 100
   (\#eq:2)
@@ -48,7 +48,7 @@ The resulting $e$ is in $Pa$.
 
 ## Absolute Humidity $\rho_w$ {-}
 
-[Absolute humidity](http://en.wikipedia.org/wiki/Humidity#Absolute_humidity) $\rho_w$ is the total amount of water vapor $m_w$ present in a given volume of air $V$. The definition of absolute humidity can be described as follows
+[Absolute humidity](https://en.wikipedia.org/wiki/Humidity#Absolute_humidity) $\rho_w$ is the total amount of water vapor $m_w$ present in a given volume of air $V$. The definition of absolute humidity can be described as follows
 $$
   \rho_w = \frac{m_w}{V}
 $$
@@ -67,7 +67,7 @@ The resulting $\rho_w$ is in $kg/m^3$.
 
 ## Mixing Ratio $\omega$ {-}
 
-[Mixing ratio](http://www.conservationphysics.org/teabag/ah_mr.php) $\omega$ is the ratio of water vapor mass $m_w$ to dry air mass $m_d$, expressed in equation as follows
+[Mixing ratio](https://www.conservationphysics.org/teabag/ah_mr.php) $\omega$ is the ratio of water vapor mass $m_w$ to dry air mass $m_d$, expressed in equation as follows
 $$
   \omega = \frac{m_w}{m_d}
 $$
@@ -76,7 +76,7 @@ The resulting $\omega$ is in $kg/kg$.
 
 ## Specific Humidity $q$ {-}
 
-[Specific humidity](http://en.wikipedia.org/wiki/Humidity#Specific_humidity) $q$ is the ratio of water vapor mass $m_w$ to the total (i.e., including dry) air mass $m$ (namely, $m = m_w + m_d$). The definition is described as
+[Specific humidity](https://en.wikipedia.org/wiki/Humidity#Specific_humidity) $q$ is the ratio of water vapor mass $m_w$ to the total (i.e., including dry) air mass $m$ (namely, $m = m_w + m_d$). The definition is described as
 $$
   q = \frac{m_w}{m} = \frac{m_w}{m_w + m_d} = \frac{\omega}{\omega + 1}
 $$
@@ -88,7 +88,7 @@ $$
   (\#eq:4)
 \end{equation}
 $$
-where $M_d = 28.9634 g/mol$ is the molar mass of dry air; $p$ represents [atmospheric pressure](http://en.wikipedia.org/wiki/Atmospheric_pressure) and the standard atmospheric pressure is equal to $101,325 Pa$. The details of formula derivation refer to [Wikipedia](http://zh.wikipedia.org/wiki/%E6%B9%BF%E5%BA%A6#.E6.AF.94.E6.BA.BC).
+where $M_d = 28.9634 g/mol$ is the molar mass of dry air; $p$ represents [atmospheric pressure](https://en.wikipedia.org/wiki/Atmospheric_pressure) and the standard atmospheric pressure is equal to $101,325 Pa$. The details of formula derivation refer to [Wikipedia](https://zh.wikipedia.org/wiki/%E6%B9%BF%E5%BA%A6#.E6.AF.94.E6.BA.BC).
 
 Substitute $\frac{M_w}{M_d} \approx 0.622$ into equation \@ref(eq:4) and simplify the formula.
 $$

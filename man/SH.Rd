@@ -27,6 +27,6 @@ SH(e, p = 101325)
 \code{\link{WVP2}}, \code{\link{WVP2}}, \code{\link{AH}}, \code{\link{RH}}, \code{\link{MR}}.
 }
 \author{
-Jun Cai (\email{cai-j12@mails.tsinghua.edu.cn}), PhD candidate from
-Department of Earth System Science, Tsinghua University
+Jun Cai (\email{caijun@fudan.edu.cn}), Young Research Fellow at
+the School of Public Health, Fudan University
 }

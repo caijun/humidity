@@ -29,6 +29,6 @@ AH(e, t)
 \code{\link{WVP1}}, \code{\link{WVP2}}, \code{\link{RH}}, \code{\link{SH}}.
 }
 \author{
-Jun Cai (\email{cai-j12@mails.tsinghua.edu.cn}), PhD candidate from
-Department of Earth System Science, Tsinghua University
+Jun Cai (\email{caijun@fudan.edu.cn}), Young Research Fellow at
+the School of Public Health, Fudan University
 }

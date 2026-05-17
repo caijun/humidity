@@ -4,13 +4,15 @@
 \name{ivt}
 \alias{ivt}
 \title{Aerosol transmission efficiency of influenza A virus from guinea pigs to guinea pigs}
-\format{A data frame with 24 rows and 4 variables:
+\format{
+A data frame with 24 rows and 4 variables:
 \itemize{
   \item T: temperature in degree Celsius (5--30)
   \item RH: relative humidity in percentage (20--80)
   \item PT: transmission efficiency in percentage (0--100)
   \item source: data source
-}}
+}
+}
 \source{
 Lowen, A. C., Mubareka, S., Steel, J., & Palese, P. (2007). \emph{Influenza virus transmission is dependent on relative humidity and temperature}. PLoS pathogens, 3(10), e151.
 

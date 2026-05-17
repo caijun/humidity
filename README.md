@@ -1,9 +1,9 @@
 # humidity
 
-[![Build Status](https://travis-ci.org/caijun/humidity.svg?branch=master)](https://travis-ci.org/caijun/humidity)
+[![Build Status](https://travis-ci.org/caijun/humidity.svg?branch=master)](https://app.travis-ci.com/caijun/humidity)
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/humidity)](https://CRAN.R-project.org/package=humidity)
-[![Monthly Downloads from RStudio Mirror](http://cranlogs.r-pkg.org/badges/humidity)](https://github.com/metacran/cranlogs.app)
-[![Total Downloads from RStudio Mirror](https://cranlogs.r-pkg.org/badges/grand-total/humidity)](http://www.r-pkg.org/pkg/humidity)
+[![Monthly Downloads from RStudio Mirror](http://cranlogs.r-pkg.org/badges/humidity)](https://github.com/r-hub/cranlogs.app)
+[![Total Downloads from RStudio Mirror](https://cranlogs.r-pkg.org/badges/grand-total/humidity)](https://www.r-pkg.org/pkg/humidity)
 
 humidity is an R package for calculating water vapor measures from temperature and dew point.
 

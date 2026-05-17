@@ -1,3 +1,10 @@
+### CHANGES IN humidity VERSION 0.1.6
+
+#### MISC
+
+- Package CITATION file uses `bibentry()` instead of old-style `citEntry()`.
+- fixed invalid URLs
+
 ### CHANGES IN humidity VERSION 0.1.5
 
 #### NEW FEATURES
@@ -6,14 +13,14 @@
 
 #### MISC
 
-- remove unused dependency packages
+- removed unused dependency packages
 
 
 ### CHANGES IN humidity VERSION 0.1.4
 
 #### MISC
 
-- used the URLencode() result of the URL containing "<>" characters, which resulted in the Bad Request while runing `R CMD check --as-cran` command
+- used the URLencode() result of the URL containing "<>" characters, which resulted in the Bad Request while running `R CMD check --as-cran` command
 
 
 ### CHANGES IN humidity VERSION 0.1.3
@@ -48,7 +55,7 @@
 
 #### BUG FIXES
 
-- updated vignette [Regression of Influenza Virus Survival on Specific Humidity](https://CRAN.R-project.org/package=humidity/vignettes/ivs-sh.html)
+- updated vignette [Regression of Influenza Virus Survival on Specific Humidity]https://cran.r-project.org/web/packages/humidity/vignettes/ivt_ivs-sh.html)
 
 
 ### CHANGES IN humidity VERSION 0.1.0
